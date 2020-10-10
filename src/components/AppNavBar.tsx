@@ -97,6 +97,11 @@ export const AppNavBar = () => {
   const history = useHistory();
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  const changePage = (path: string) => () => {
+    history.push(`/${path}`);
+    setIsMenuOpen(false);
+  };
+
   const menuOptions: { name: string; link: string; icon: string }[] = [
     { name: "log", link: "log", icon: "home" },
     { name: "analytics", link: "analytics", icon: "chart line" },
@@ -113,7 +118,7 @@ export const AppNavBar = () => {
       )}
       <MenuWrapper isMenuOpen={isMenuOpen}>
         {menuOptions.map((option, idx) => (
-          <MenuOption key={idx} onClick={() => history.push(`/${option.link}`)}>
+          <MenuOption key={idx} onClick={changePage(option.link)}>
             <span>{capitalize(option.name)}</span>
             <Icon className={option.icon} />
           </MenuOption>

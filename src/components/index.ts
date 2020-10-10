@@ -1,2 +1,3 @@
 export * from "./AppNavBar";
-export * from "./AppWrapper";
+export * from "./AppInnerWrapper";
+export * from "./AppOutterWrapper";
