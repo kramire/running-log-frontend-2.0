@@ -30,7 +30,6 @@ const Wrapper = styled.div`
 `;
 
 const MenuWrapper = styled.div<{ isMenuOpen: boolean }>`
-  /* then, arrange our links top to bottom */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,6 +37,7 @@ const MenuWrapper = styled.div<{ isMenuOpen: boolean }>`
   color: ${props => props.theme.colors.secondary} > a {
     margin-left: 1em;
   }
+  background-color: #1a222d;
 
   @media (max-width: ${props => props.theme.screenSize.tablet}) {
     z-index: 0;
@@ -46,23 +46,21 @@ const MenuWrapper = styled.div<{ isMenuOpen: boolean }>`
     justify-content: center;
     align-items: flex-end;
 
-    /* first, make our dropdown cover the screen */
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: 100vh;
-    /* fix nav height on mobile safari, where 100vh is a little off */
     height: -webkit-fill-available;
 
-    margin: 0;
+    margin: 0 0 0 45%;
     padding-left: 7vw;
     padding-right: 7vw;
 
     opacity: ${props => (props.isMenuOpen ? "1" : "0")}; /* fade out */
     transform: ${props =>
-      props.isMenuOpen ? "translateY(0)" : "translateY(-100%)"}; /* fade out */
-    transition: transform 0.2s, opacity 0.2s;
+      props.isMenuOpen ? "translateX(0)" : "translateX(100%)"}; /* fade out */
+    transition: transform 0.3s, opacity 0.3s;
   }
 `;
 
