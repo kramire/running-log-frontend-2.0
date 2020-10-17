@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { CircleDateLabel } from "./CircleDateLabel";
 import { LogDetails } from "./LogDetails";
+import { StateInterface, Unit } from "../../base";
+import { useSelector } from "react-redux";
 import { Icon } from "semantic-ui-react";
 import styled from "styled-components";
 
@@ -34,17 +36,28 @@ const StyledIcon = styled(Icon)`
   }
 `;
 
-export const LogRow = () => {
+const unitDict: { [key in Unit]: string } = {
+  mi: "miles",
+  km: "kilometers",
+};
+
+export const LogRow: FC<{ runId: string }> = ({ runId }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const unit = useSelector((state: StateInterface) => state.user?.unit ?? "mi");
+  const run = useSelector((state: StateInterface) => state.runs[runId]);
+  const { date, distance } = run;
+  console.log(runId);
   return (
     <Wrapper>
-      <CircleDateLabel />
-      <MileWrapper>6 miles</MileWrapper>
+      <CircleDateLabel date={date} />
+      <MileWrapper>
+        {distance} {unitDict[unit]}
+      </MileWrapper>
       <StyledIcon
         name={isOpen ? "chevron down" : "chevron right"}
         onClick={() => setIsOpen(!isOpen)}
       />
-      <LogDetails isOpen={isOpen} />
+      <LogDetails isOpen={isOpen} runId={runId} />
     </Wrapper>
   );
 };

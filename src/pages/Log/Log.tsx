@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { LogRow } from "./LogRow";
-import { Header } from "../../components";
+import { AddRun } from "./AddRun";
+import { Header, AddButton } from "../../components";
+import { StateInterface } from "../../base";
+import { useSelector } from "react-redux";
+import { Loader } from "semantic-ui-react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -11,6 +15,10 @@ const Wrapper = styled.div`
   > * {
     margin: 0.5em 0;
   }
+
+  > :last-child {
+    margin: 0;
+  }
 `;
 
 const RowWrapper = styled.div`
@@ -20,17 +28,23 @@ const RowWrapper = styled.div`
 `;
 
 export const Log = () => {
-  return (
+  const [isAddRunOpen, setIsAddRunOpen] = useState(false);
+  const runs = useSelector((state: StateInterface) => state.runs);
+  const runIds = Object.keys(runs);
+  console.log("in log");
+
+  return !runIds.length ? (
+    <Loader inline="centered" size="mini" inverted />
+  ) : (
     <Wrapper>
       <Header>Log</Header>
       <RowWrapper>
-        <LogRow />
-        <LogRow />
-        <LogRow />
-        <LogRow />
-        <LogRow />
-        <LogRow />
+        {runIds.map(id => (
+          <LogRow key={id} runId={id} />
+        ))}
       </RowWrapper>
+      <AddButton onClick={() => setIsAddRunOpen(true)}>+ Add Run</AddButton>
+      <AddRun isOpen={isAddRunOpen} setIsOpen={setIsAddRunOpen} />
     </Wrapper>
   );
 };
