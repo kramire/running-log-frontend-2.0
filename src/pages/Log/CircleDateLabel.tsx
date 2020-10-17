@@ -1,4 +1,5 @@
-import React from "react";
+import React, { FC } from "react";
+import { format } from "date-fns";
 import styled from "styled-components";
 
 const CircularWrapper = styled.div`
@@ -29,11 +30,14 @@ const Day = styled.div`
   font-size: 16px;
 `;
 
-export const CircleDateLabel = () => {
+export const CircleDateLabel: FC<{ date: string }> = ({ date }) => {
+  const dateArg = new Date(date);
+  const month = format(dateArg, "MMM");
+  const day = format(dateArg, "dd");
   return (
     <CircularWrapper>
-      <Month>Oct</Month>
-      <Day>14</Day>
+      <Month>{month}</Month>
+      <Day>{day}</Day>
     </CircularWrapper>
   );
 };

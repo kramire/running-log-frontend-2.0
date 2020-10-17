@@ -1,0 +1,267 @@
+{
+  "id": "5cf8c113155f6c20cc13d56a",
+  "unit": "mi",
+  "weekStart": "Sun",
+  "optInAlerts": true,
+  "username": "kate11",
+  "firstName": "Katie",
+  "trainingFor": "half marathon",
+  "runs": [
+    {
+      "runType": ["Easy"],
+      "id": "5cf8c113155f6c20cc13d57e",
+      "distance": 4,
+      "date": "2020-09-06T00:00:00Z",
+      "location": "Barcelona",
+      "note": "Great run!"
+    },
+    {
+      "runType": ["Speed"],
+      "id": "5cf8c113155f6c20cc13d57d",
+      "distance": 5,
+      "date": "2020-09-07T00:00:00Z",
+      "location": "Barcelona",
+      "note": "8:00 pace"
+    },
+    {
+      "runType": ["Recovery"],
+      "id": "5cf8c113155f6c20cc13d57c",
+      "distance": 4,
+      "date": "2020-09-08T00:00:00Z",
+      "location": "Barcelona",
+      "note": ""
+    },
+    {
+      "runType": ["Easy"],
+      "id": "5cf8c113155f6c20cc13d57b",
+      "distance": 4,
+      "date": "2020-09-10T00:00:00Z",
+      "location": "Barcelona",
+      "note": "Strong sun today."
+    },
+    {
+      "runType": ["Distance"],
+      "id": "5cf8c113155f6c20cc13d57a",
+      "distance": 8,
+      "date": "2020-09-11T00:00:00Z",
+      "location": "Barcelona",
+      "note": "Great long run"
+    },
+    {
+      "runType": ["Easy"],
+      "id": "5cf8c113155f6c20cc13d579",
+      "distance": 4,
+      "date": "2020-09-13T00:00:00Z",
+      "location": "Barcelona",
+      "note": "Great run!"
+    },
+    {
+      "runType": ["Speed"],
+      "id": "5cf8c113155f6c20cc13d578",
+      "distance": 5,
+      "date": "2020-09-14T00:00:00Z",
+      "location": "Barcelona",
+      "note": "8:00 pace"
+    },
+    {
+      "runType": ["Recovery"],
+      "id": "5cf8c113155f6c20cc13d577",
+      "distance": 4,
+      "date": "2020-09-15T00:00:00Z",
+      "location": "Barcelona",
+      "note": ""
+    },
+    {
+      "runType": ["Easy"],
+      "id": "5cf8c113155f6c20cc13d576",
+      "distance": 4,
+      "date": "2020-09-17T00:00:00Z",
+      "location": "Barcelona",
+      "note": "Strong sun today."
+    },
+    {
+      "runType": ["Distance"],
+      "id": "5cf8c113155f6c20cc13d575",
+      "distance": 8,
+      "date": "2020-09-18T00:00:00Z",
+      "location": "Barcelona",
+      "note": "Great long run"
+    },
+    {
+      "runType": ["Easy"],
+      "id": "5cf8c113155f6c20cc13d574",
+      "distance": 4,
+      "date": "2020-09-20T00:00:00Z",
+      "location": "Barcelona",
+      "note": "Great run!"
+    },
+    {
+      "runType": ["Speed"],
+      "id": "5cf8c113155f6c20cc13d573",
+      "distance": 5,
+      "date": "2020-09-21T00:00:00Z",
+      "location": "Barcelona",
+      "note": "8:00 pace"
+    },
+    {
+      "runType": ["Recovery"],
+      "id": "5cf8c113155f6c20cc13d572",
+      "distance": 4,
+      "date": "2020-09-22T00:00:00Z",
+      "location": "Barcelona",
+      "note": ""
+    },
+    {
+      "runType": ["Easy"],
+      "id": "5cf8c113155f6c20cc13d571",
+      "distance": 4,
+      "date": "2020-09-24T00:00:00Z",
+      "location": "Barcelona",
+      "note": "Strong sun today."
+    },
+    {
+      "runType": ["Distance"],
+      "id": "5cf8c113155f6c20cc13d570",
+      "distance": 8,
+      "date": "2020-09-25T00:00:00Z",
+      "location": "Barcelona",
+      "note": "Great long run"
+    },
+    {
+      "runType": ["Easy"],
+      "id": "5cf8c113155f6c20cc13d56f",
+      "distance": 4,
+      "date": "2020-09-27T00:00:00Z",
+      "location": "Barcelona",
+      "note": "Great run!"
+    },
+    {
+      "runType": ["Speed"],
+      "id": "5cf8c113155f6c20cc13d56e",
+      "distance": 5,
+      "date": "2020-09-28T00:00:00Z",
+      "location": "Barcelona",
+      "note": "8:00 pace"
+    },
+    {
+      "runType": ["Easy"],
+      "id": "5cf8c113155f6c20cc13d56c",
+      "distance": 4,
+      "date": "2020-09-30T00:00:00Z",
+      "location": "Barcelona",
+      "note": "Strong sun today."
+    },
+    {
+      "runType": ["Easy", "Distance"],
+      "id": "5cf8ca84bcf8b9213afa629e",
+      "distance": 6,
+      "date": "2020-10-03T00:00:00Z",
+      "location": "Barcelona",
+      "note": "Average pace was 8:30."
+    },
+    {
+      "runType": ["Easy", "Distance", "Tempo"],
+      "id": "5cf8caea28caa6213e3fc44c",
+      "distance": 4,
+      "date": "2020-10-04T00:00:00Z",
+      "location": "Barcelona",
+      "note": "Hot and humid - slow run."
+    },
+    {
+      "runType": ["Easy", "Distance"],
+      "id": "5cf8cb8bd2e0d32145f3f8ed",
+      "distance": 3,
+      "date": "2020-10-05T00:00:00Z",
+      "location": "Barcelona",
+      "note": ""
+    },
+    {
+      "runType": [],
+      "id": "5cf92ac0169121237fd1dd14",
+      "distance": 3,
+      "date": "2020-10-07T00:00:00Z",
+      "location": "",
+      "note": ""
+    },
+    {
+      "runType": [],
+      "id": "5cfb63b3128abf3389c3c2de",
+      "distance": 2,
+      "date": "2020-10-04T00:00:00Z",
+      "location": "",
+      "note": ""
+    },
+    {
+      "runType": [],
+      "id": "5cfb63bf128abf3389c3c2e0",
+      "distance": 3,
+      "date": "2020-10-02T00:00:00Z",
+      "location": "",
+      "note": ""
+    },
+    {
+      "runType": ["Speed"],
+      "id": "5cfb9c1c2526cc351a16dec0",
+      "distance": 3,
+      "date": "2020-10-26T00:00:00Z",
+      "location": "New York",
+      "note": "Central Park"
+    },
+    {
+      "runType": ["Distance"],
+      "id": "5cfb9c472526cc351a16dec2",
+      "distance": 3,
+      "date": "2020-10-19T00:00:00Z",
+      "location": "New York",
+      "note": "Hudson River"
+    },
+    {
+      "runType": ["Speed", "Progression", "Fartlek"],
+      "id": "5cfbb28b2526cc351a16dec6",
+      "distance": 1,
+      "date": "2020-10-12T00:00:00Z",
+      "location": "New York",
+      "note": "magically ran in central park"
+    },
+    {
+      "runType": [],
+      "id": "5d001e5220156a11481ac370",
+      "distance": 3,
+      "date": "2020-10-08T00:00:00Z",
+      "location": "Barcelona, Spain",
+      "note": "",
+      "latitude": 41.389939999999996,
+      "longitude": 2.1788794
+    },
+    {
+      "runType": [],
+      "id": "5d001ebe20156a11481ac372",
+      "distance": 2,
+      "date": "2020-10-01T00:00:00Z",
+      "location": "Barcelona, Spain",
+      "note": "",
+      "latitude": 41.389939999999996,
+      "longitude": 2.1788794
+    },
+    {
+      "runType": [],
+      "id": "5d00bfe927b5c307e7a03adb",
+      "distance": 5,
+      "date": "2020-10-18T00:00:00Z",
+      "location": "",
+      "note": "",
+      "latitude": 41.394937299999995,
+      "longitude": 2.1976487
+    },
+    {
+      "runType": [],
+      "id": "5d00daf3cec67d09d43afdbe",
+      "distance": 3,
+      "date": "2020-10-10T00:00:00Z",
+      "location": "Barcelona, Spain",
+      "note": "",
+      "latitude": 41.3949271,
+      "longitude": 2.1976209
+    }
+  ]
+}

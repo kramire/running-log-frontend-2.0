@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Tag } from "../../components";
-import { TagType } from "../../base";
-import { Icon } from "semantic-ui-react";
+import { StateInterface } from "../../base";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const Wrapper = styled.div<{ isOpen: boolean }>`
@@ -20,7 +20,6 @@ const Wrapper = styled.div<{ isOpen: boolean }>`
 
 const TagsOutterWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
 `;
 
 const TagsInnerWrapper = styled.div`
@@ -28,32 +27,33 @@ const TagsInnerWrapper = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   grid-gap: 0.5em;
+
+  margin-left: 0.5em;
 `;
 
 interface LogDetailsProps {
   isOpen: boolean;
+  runId: string;
 }
 
-export const LogDetails: FC<LogDetailsProps> = ({ isOpen }) => {
-  const tags: TagType[] = ["easy", "distance", "progression", "intervals"];
+export const LogDetails: FC<LogDetailsProps> = ({ isOpen, runId }) => {
+  const run = useSelector((state: StateInterface) => state.runs[runId]);
+  const { runType: tags, location, note } = run;
+  console.log(runId);
   return (
     <Wrapper isOpen={isOpen}>
-      <div>Location: Vienna, Austria</div>
-      <div>
-        Weather:
-        <span>
-          <Icon name="rain" />
-        </span>
-      </div>
-      <TagsOutterWrapper>
-        Tags:
-        <TagsInnerWrapper>
-          {tags.map(tag => (
-            <Tag tagName={tag} />
-          ))}
-        </TagsInnerWrapper>
-      </TagsOutterWrapper>
-      <div>Really messy run in the rain!</div>
+      {location && <div>Location: {location}</div>}
+      {tags.length && (
+        <TagsOutterWrapper>
+          Tags:
+          <TagsInnerWrapper>
+            {tags.map(tag => (
+              <Tag key={`${runId}_${tag}`} tagName={tag} />
+            ))}
+          </TagsInnerWrapper>
+        </TagsOutterWrapper>
+      )}
+      {note && <div>{note}</div>}
     </Wrapper>
   );
 };
