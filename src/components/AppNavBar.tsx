@@ -6,6 +6,8 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   width: 100%;
+  height: 8vh;
+  box-sizing: border-box;
 
   display: flex;
   justify-content: space-between;
@@ -40,7 +42,7 @@ const MenuWrapper = styled.div<{ isMenuOpen: boolean }>`
   background-color: #1a222d;
 
   @media (max-width: ${props => props.theme.screenSize.tablet}) {
-    z-index: 0;
+    z-index: 10;
 
     flex-direction: column;
     justify-content: center;
@@ -57,10 +59,9 @@ const MenuWrapper = styled.div<{ isMenuOpen: boolean }>`
     padding-left: 7vw;
     padding-right: 7vw;
 
-    opacity: ${props => (props.isMenuOpen ? "1" : "0")}; /* fade out */
     transform: ${props =>
       props.isMenuOpen ? "translateX(0)" : "translateX(100%)"}; /* fade out */
-    transition: transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s;
   }
 `;
 
@@ -69,7 +70,7 @@ const MenuIcon = styled(Icon)`
     display: none;
 
     @media (max-width: ${props => props.theme.screenSize.tablet}) {
-      z-index: 1;
+      z-index: 20;
       display: initial;
 
       &:hover {
