@@ -3,6 +3,7 @@ import { FontAwesomeIcon as FaIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { useWindowSize } from "../hooks";
 import { TABLET } from "../lib/constants";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -31,9 +32,11 @@ export const NavbarItem = (props: { icon: IconProp; text: string }) => {
   const { width } = useWindowSize();
   const { icon, text } = props;
   return (
-    <Wrapper>
-      {width > TABLET && <IconText>{text}</IconText>}
-      <FaIcon icon={icon} />
-    </Wrapper>
+    <Link to={`/${text.toLowerCase()}`}>
+      <Wrapper>
+        {width > TABLET && <IconText>{text}</IconText>}
+        <FaIcon icon={icon} />
+      </Wrapper>
+    </Link>
   );
 };

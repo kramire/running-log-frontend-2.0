@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -18,7 +19,9 @@ export const LogoHeader = () => {
   const handleClick = () => console.log("go home");
   return (
     <Wrapper onClick={handleClick}>
-      <Logo>Running Log</Logo>
+      <Link to="/">
+        <Logo>Running Log</Logo>
+      </Link>
     </Wrapper>
   );
 };
