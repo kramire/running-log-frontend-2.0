@@ -1,45 +1,44 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React from "react";
+import { Navbar, Main, LogoHeader } from "./components";
+import { Home } from "./pages";
+import styled from "styled-components";
 
-function App() {
-  const [count, setCount] = useState(0)
+const Wrapper = styled.div`
+  height: 100%;
+  margin: 0 2em;
 
+  display: grid;
+  grid-gap: 2em;
+
+  grid-template-areas:
+    "header"
+    "main"
+    "navbar";
+
+  grid-template-rows: 1fr 16fr 1fr;
+
+  @media (min-width: ${props => props.theme.screen.tablet}) {
+    grid-template-areas:
+      "header header"
+      "navbar main";
+
+    grid-template-rows: 1fr 9fr;
+    grid-template-columns: 1fr 4fr;
+
+    padding-bottom: 3em;
+  }
+`;
+
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
-}
+    <Wrapper>
+      <LogoHeader />
+      <Navbar />
+      <Main>
+        <Home />
+      </Main>
+    </Wrapper>
+  );
+};
 
-export default App
+export default App;
