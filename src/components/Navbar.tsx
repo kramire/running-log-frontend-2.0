@@ -1,11 +1,5 @@
 import React from "react";
 import { NavbarItem, AddRunButton } from "../components";
-import {
-  faHome,
-  faChartLine,
-  faCalendarAlt,
-  faCog,
-} from "@fortawesome/free-solid-svg-icons";
 import { useWindowSize } from "../hooks";
 import styled from "styled-components";
 
@@ -26,11 +20,11 @@ export const Navbar = () => {
   const { width } = useWindowSize();
   return (
     <Wrapper $width={width}>
-      <NavbarItem icon={faHome} text="Home" />
-      <NavbarItem icon={faChartLine} text="Analytics" />
+      <NavbarItem icon={"home"} text="Home" />
+      <NavbarItem icon={"chart line"} text="Analytics" />
       <AddRunButton />
-      <NavbarItem icon={faCalendarAlt} text="Calendar" />
-      <NavbarItem icon={faCog} text="Settings" />
+      <NavbarItem icon={"calendar alternate outline"} text="Calendar" />
+      <NavbarItem icon={"setting"} text="Settings" />
     </Wrapper>
   );
 };

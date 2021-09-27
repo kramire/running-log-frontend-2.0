@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon as FaIcon } from "@fortawesome/react-fontawesome";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { Icon, SemanticICONS } from "semantic-ui-react";
 import { useWindowSize } from "../hooks";
 import { TABLET } from "../lib/constants";
 import { Link } from "react-router-dom";
@@ -28,14 +27,14 @@ export const IconText = styled.span.attrs((props: { $width: number }) => ({
   margin-right: 1em;
 `;
 
-export const NavbarItem = (props: { icon: IconProp; text: string }) => {
+export const NavbarItem = (props: { icon: SemanticICONS; text: string }) => {
   const { width } = useWindowSize();
   const { icon, text } = props;
   return (
     <Link to={`/${text.toLowerCase()}`}>
       <Wrapper>
         {width > TABLET && <IconText>{text}</IconText>}
-        <FaIcon icon={icon} />
+        <Icon name={icon} />
       </Wrapper>
     </Link>
   );

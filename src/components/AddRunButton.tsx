@@ -1,8 +1,7 @@
 import React from "react";
-import { FontAwesomeIcon as FaIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useWindowSize } from "../hooks";
 import { Wrapper, IconText } from "./NavBarItem";
+import { Icon } from "semantic-ui-react";
 import { TABLET } from "../lib/constants";
 import styled from "styled-components";
 
@@ -20,7 +19,7 @@ export const AddRunButton = () => {
   return (
     <AddRunWrapper onClick={handleClick}>
       {width > TABLET && <IconText>Add Run</IconText>}
-      <FaIcon icon={faPlus} />
+      <Icon name={"add"} />
     </AddRunWrapper>
   );
 };
