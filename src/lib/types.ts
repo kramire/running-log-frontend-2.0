@@ -1,9 +1,17 @@
 //
 // USER AND USER SETTINGS
 //
-export type Unit = "mi" | "km";
+export enum Unit {
+  "mi" = "mi",
+  "km" = "km",
+}
 
-export type TrainingFor = "marathon" | "halfMarathon" | "10k" | "5k";
+export enum TrainingFor {
+  "marathon" = "marathon",
+  "halfMarathon" = "halfMarathon",
+  "10k" = "10k",
+  "5k" = "5k",
+}
 
 export const weekStartDict = {
   0: "Sun",
@@ -23,16 +31,17 @@ export interface User {
 //
 // RUN
 //
-export type RunType =
-  | "speed"
-  | "distance"
-  | "tempo"
-  | "easy"
-  | "intervals"
-  | "hills"
-  | "recovery"
-  | "farlek"
-  | "progression";
+export enum RunType {
+  "speed" = "speed",
+  "distance" = "distance",
+  "tempo" = "tempo",
+  "easy" = "easy",
+  "intervals" = "intervals",
+  "hills" = "hills",
+  "recovery" = "recovery",
+  "farlek" = "farlek",
+  "progression" = "progression",
+}
 
 export interface Run {
   distance: number;

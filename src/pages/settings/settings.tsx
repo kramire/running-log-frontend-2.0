@@ -12,7 +12,13 @@ import {
 import { useWindowSize } from "../../hooks";
 import { TABLET } from "../../lib/constants";
 import { mockUser } from "../../lib/mockData";
-import { User } from "../../lib/types";
+import { User, Unit, weekStartDict, TrainingFor } from "../../lib/types";
+
+interface ButtonOpt {
+  key: string;
+  value: any;
+  text: string;
+}
 
 const FormRow = (props: {
   width: number;
@@ -30,18 +36,38 @@ const FormRow = (props: {
 );
 
 const ButtonOptions = (props: {
-  options: string[];
-  selected: string | number;
+  options: ButtonOpt[];
+  selectedOpt: string | number;
   handleChange: (_: any, data: InputOnChangeData) => void;
 }) => (
-  <Button.Group basic>
+  <Button.Group>
     {props.options.map(opt => (
-      <Button onClick={() => props.handleChange(null, { value: opt })}>
-        {opt}
+      <Button
+        key={opt.key}
+        color={props.selectedOpt === opt.value ? "teal" : undefined}
+        onClick={() => props.handleChange(null, { value: opt.value })}
+      >
+        {opt.text}
       </Button>
     ))}
   </Button.Group>
 );
+
+const TrainForButton = (props: {
+  value: string;
+  selected: boolean;
+  handleChange: (_: any, data: InputOnChangeData) => void;
+}) => (
+  <Button
+    color={props.selected ? "teal" : undefined}
+    onClick={() => props.handleChange(null, { value: props.value })}
+  >
+    {props.value}
+  </Button>
+);
+
+const genButOpts = (opts: any[], useIdx?: boolean): ButtonOpt[] =>
+  opts.map((opt, idx) => ({ key: opt, value: useIdx ? idx : opt, text: opt }));
 
 export const Settings = () => {
   const [user, setUser] = useState<User>(mockUser);
@@ -70,16 +96,30 @@ export const Settings = () => {
           </FormRow>
           <FormRow width={width} label="Unit">
             <ButtonOptions
-              options={["mi", "km"]}
-              selected={user.unit}
+              options={genButOpts(Object.values(Unit))}
+              selectedOpt={user.unit}
               handleChange={handleChange("unit")}
             />
           </FormRow>
           <FormRow width={width} label="Week Start">
             <ButtonOptions
-              options={["Sun", "Mon"]}
-              selected={user.weekStart}
+              options={genButOpts(Object.values(weekStartDict), true)}
+              selectedOpt={user.weekStart}
               handleChange={handleChange("weekStart")}
+            />
+          </FormRow>
+          <FormRow width={width} label="Training For">
+            {Object.values(TrainingFor).map(val => (
+              <TrainForButton
+                key={val}
+                value={val.toString()}
+                selected={user.trainingFor === val}
+                handleChange={handleChange("trainingFor")}
+              />
+            ))}
+            <Button
+              icon="delete"
+              onClick={() => changeUser("trainingFor", null)}
             />
           </FormRow>
           <FormRow width={width} label="Send Alerts">
