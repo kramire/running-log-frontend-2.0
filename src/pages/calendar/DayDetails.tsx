@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { TABLET } from "../../lib/constants";
+import { GridRow } from "../../components";
 import { format } from "date-fns";
 import { Grid, Label } from "semantic-ui-react";
 import { useWindowSize } from "../../hooks";
@@ -27,25 +28,16 @@ const RunType = styled(Label)`
   }
 `;
 
-const DetailRow = (props: {
-  width: number;
-  label: string;
-  children: React.ReactNode;
-}) => (
-  <Grid.Row>
-    <Grid.Column width={props.width > TABLET ? 2 : 4}>
-      {props.label}
-    </Grid.Column>
-    <Grid.Column width={props.width > TABLET ? 6 : 12}>
-      {props.children}
-    </Grid.Column>
-  </Grid.Row>
-);
-
 export const DayDetails = (props: { selectedDate: Date }) => {
   const { selectedDate } = props;
   const [run, setRun] = useState<Run>();
+
   const { width } = useWindowSize();
+  const colWidths = {
+    label: width > TABLET ? 2 : 4,
+    content: width > TABLET ? 6 : 12,
+  };
+
   useEffect(() => {
     setRun(mockRun);
   }, []);
@@ -61,23 +53,23 @@ export const DayDetails = (props: { selectedDate: Date }) => {
         <div>No run data.</div>
       ) : (
         <Grid style={{ margin: 0 }}>
-          <DetailRow
-            width={width}
+          <GridRow
+            width={colWidths}
             label="Distance"
-          >{`${run.distance} ${run.unit}`}</DetailRow>
-          <DetailRow width={width} label="Location">
+          >{`${run.distance} ${run.unit}`}</GridRow>
+          <GridRow width={colWidths} label="Location">
             {run.location}
-          </DetailRow>
-          <DetailRow width={width} label="Type">
+          </GridRow>
+          <GridRow width={colWidths} label="Type">
             {run.runType.map(t => (
               <RunType key={t} color="teal">
                 {t}
               </RunType>
             ))}
-          </DetailRow>
-          <DetailRow width={width} label="Note">
+          </GridRow>
+          <GridRow width={colWidths} label="Note">
             {run.note || "N/A"}
-          </DetailRow>
+          </GridRow>
         </Grid>
       )}
     </div>

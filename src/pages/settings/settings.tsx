@@ -10,48 +10,10 @@ import {
   CheckboxProps,
 } from "semantic-ui-react";
 import { useWindowSize } from "../../hooks";
+import { ButtonOptions, GridRow, genButOpts } from "../../components";
 import { TABLET } from "../../lib/constants";
 import { mockUser } from "../../lib/mockData";
 import { User, Unit, weekStartDict, TrainingFor } from "../../lib/types";
-
-interface ButtonOpt {
-  key: string;
-  value: any;
-  text: string;
-}
-
-const FormRow = (props: {
-  width: number;
-  label: string;
-  children: React.ReactNode;
-}) => (
-  <Grid.Row>
-    <Grid.Column width={props.width > TABLET ? 3 : 5}>
-      {props.label}
-    </Grid.Column>
-    <Grid.Column width={props.width > TABLET ? 6 : 9}>
-      {props.children}
-    </Grid.Column>
-  </Grid.Row>
-);
-
-const ButtonOptions = (props: {
-  options: ButtonOpt[];
-  selectedOpt: string | number;
-  handleChange: (_: any, data: InputOnChangeData) => void;
-}) => (
-  <Button.Group>
-    {props.options.map(opt => (
-      <Button
-        key={opt.key}
-        color={props.selectedOpt === opt.value ? "teal" : undefined}
-        onClick={() => props.handleChange(null, { value: opt.value })}
-      >
-        {opt.text}
-      </Button>
-    ))}
-  </Button.Group>
-);
 
 const TrainForButton = (props: {
   value: string;
@@ -66,12 +28,14 @@ const TrainForButton = (props: {
   </Button>
 );
 
-const genButOpts = (opts: any[], useIdx?: boolean): ButtonOpt[] =>
-  opts.map((opt, idx) => ({ key: opt, value: useIdx ? idx : opt, text: opt }));
-
 export const Settings = () => {
   const [user, setUser] = useState<User>(mockUser);
+
   const { width } = useWindowSize();
+  const colWidths = {
+    label: width > TABLET ? 3 : 5,
+    content: width > TABLET ? 6 : 9,
+  };
 
   const changeUser = (label: string, value: any) =>
     setUser({ ...user, [label]: value });
@@ -87,28 +51,28 @@ export const Settings = () => {
       <h1>Settings</h1>
       <Form onSubmit={handleSubmit}>
         <Grid centered={width < TABLET} style={{ margin: 0 }}>
-          <FormRow width={width} label="First Name">
+          <GridRow width={colWidths} label="First Name">
             <Input
               fluid
               value={user.firstName}
               onChange={handleChange("firstName")}
             />
-          </FormRow>
-          <FormRow width={width} label="Unit">
+          </GridRow>
+          <GridRow width={colWidths} label="Unit">
             <ButtonOptions
               options={genButOpts(Object.values(Unit))}
               selectedOpt={user.unit}
               handleChange={handleChange("unit")}
             />
-          </FormRow>
-          <FormRow width={width} label="Week Start">
+          </GridRow>
+          <GridRow width={colWidths} label="Week Start">
             <ButtonOptions
               options={genButOpts(Object.values(weekStartDict), true)}
               selectedOpt={user.weekStart}
               handleChange={handleChange("weekStart")}
             />
-          </FormRow>
-          <FormRow width={width} label="Training For">
+          </GridRow>
+          <GridRow width={colWidths} label="Training For">
             {Object.values(TrainingFor).map(val => (
               <TrainForButton
                 key={val}
@@ -121,14 +85,14 @@ export const Settings = () => {
               icon="delete"
               onClick={() => changeUser("trainingFor", null)}
             />
-          </FormRow>
-          <FormRow width={width} label="Send Alerts">
+          </GridRow>
+          <GridRow width={colWidths} label="Send Alerts">
             <Checkbox
               toggle
               checked={user.sendAlerts}
               onChange={handleChange("sendAlerts")}
             />
-          </FormRow>
+          </GridRow>
           <Grid.Row>
             <Form.Button animated="vertical">
               <Button.Content visible>Save</Button.Content>
