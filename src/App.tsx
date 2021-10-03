@@ -10,20 +10,21 @@ const Wrapper = styled.div`
   margin: 0 2em;
 
   display: grid;
-  grid-gap: 2em;
+  grid-gap: 1em;
 
   grid-template-areas:
     "header"
     "main"
     "navbar";
 
-  grid-template-rows: 1fr 16fr 1fr;
+  grid-template-rows: 2fr 16fr 1fr;
 
   @media (min-width: ${props => props.theme.screen.tablet}) {
     grid-template-areas:
       "header header"
       "navbar main";
 
+    grid-gap: 2em;
     grid-template-rows: 1fr 9fr;
     grid-template-columns: 1fr 4fr;
 
