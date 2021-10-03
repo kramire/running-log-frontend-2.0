@@ -10,23 +10,16 @@ import {
   CheckboxProps,
 } from "semantic-ui-react";
 import { useWindowSize } from "../../hooks";
-import { ButtonOptions, GridRow, genButOpts } from "../../components";
+import {
+  ButtonOptions,
+  GridRow,
+  LabelButton,
+  SmallButton,
+  genButOpts,
+} from "../../components";
 import { TABLET } from "../../lib/constants";
 import { mockUser } from "../../lib/mockData";
 import { User, Unit, weekStartDict, TrainingFor } from "../../lib/types";
-
-const TrainForButton = (props: {
-  value: string;
-  selected: boolean;
-  handleChange: (_: any, data: InputOnChangeData) => void;
-}) => (
-  <Button
-    color={props.selected ? "teal" : undefined}
-    onClick={() => props.handleChange(null, { value: props.value })}
-  >
-    {props.value}
-  </Button>
-);
 
 export const Settings = () => {
   const [user, setUser] = useState<User>(mockUser);
@@ -74,14 +67,14 @@ export const Settings = () => {
           </GridRow>
           <GridRow width={colWidths} label="Training For">
             {Object.values(TrainingFor).map(val => (
-              <TrainForButton
+              <LabelButton
                 key={val}
                 value={val.toString()}
                 selected={user.trainingFor === val}
                 handleChange={handleChange("trainingFor")}
               />
             ))}
-            <Button
+            <SmallButton
               icon="delete"
               onClick={() => changeUser("trainingFor", null)}
             />

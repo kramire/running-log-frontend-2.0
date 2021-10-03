@@ -7,10 +7,10 @@ import { ThemeProvider } from "styled-components";
 import "semantic-ui-css/semantic.min.css";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <ThemeProvider theme={theme}>
+    <App />
+  </ThemeProvider>,
+  // </React.StrictMode>,
   document.getElementById("root")
 );

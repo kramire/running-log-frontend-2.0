@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, InputOnChangeData } from "semantic-ui-react";
-
+import { SmallButton } from "./";
 interface ButtonOpt {
   key: string;
   value: any;
@@ -17,13 +17,13 @@ export const ButtonOptions = (props: {
 }) => (
   <Button.Group>
     {props.options.map(opt => (
-      <Button
+      <SmallButton
         key={opt.key}
         color={props.selectedOpt === opt.value ? "teal" : undefined}
         onClick={() => props.handleChange(null, { value: opt.value })}
       >
         {opt.text}
-      </Button>
+      </SmallButton>
     ))}
   </Button.Group>
 );
