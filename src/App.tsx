@@ -1,6 +1,7 @@
 import React from "react";
 import { Home, Analytics, Calendar, Settings } from "./pages";
 import { Navbar, Main, LogoHeader } from "./components";
+import { DateProvider, UserProvider } from "./contexts";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 
@@ -32,28 +33,32 @@ const Wrapper = styled.div`
 
 export const App = () => {
   return (
-    <Wrapper>
-      <Router>
-        <LogoHeader />
-        <Navbar />
-        <Main>
-          <Switch>
-            <Route path="/analytics">
-              <Analytics />
-            </Route>
-            <Route path="/calendar">
-              <Calendar />
-            </Route>
-            <Route path="/settings">
-              <Settings />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
-        </Main>
-      </Router>
-    </Wrapper>
+    <UserProvider>
+      <Wrapper>
+        <Router>
+          <LogoHeader />
+          <Navbar />
+          <Main>
+            <Switch>
+              <Route path="/analytics">
+                <Analytics />
+              </Route>
+              <Route path="/calendar">
+                <DateProvider>
+                  <Calendar />
+                </DateProvider>
+              </Route>
+              <Route path="/settings">
+                <Settings />
+              </Route>
+              <Route path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </Main>
+        </Router>
+      </Wrapper>
+    </UserProvider>
   );
 };
 

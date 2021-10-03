@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { TABLET } from "../../lib/constants";
 import { format, isToday, addMonths, subMonths } from "date-fns";
 import { Label, Button } from "semantic-ui-react";
 import { useWindowSize } from "../../hooks";
+import { DateContext } from "../../contexts";
 import {
   getMonthDates,
-  getWeekDays,
   emptyCalCells,
   isMDYEqual,
 } from "../../lib/utils/dateUtils";
@@ -92,16 +92,10 @@ const CalendarCell = styled.div.attrs(
   }
 `;
 
-interface Calendar {
-  year: number;
-  month: number;
-}
-
 export const Calendar = () => {
-  const [calendar, setCalendar] = useState<Calendar>({ month: NaN, year: NaN });
+  const { weekDays, calendar, selectedDate, setSelectedDate, incMonth } =
+    useContext(DateContext);
   const [calDates, setCalDates] = useState<Date[]>([]);
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
-  const [weekDays, setWeekDays] = useState<string[]>([]);
   const [emptyCells, setEmptyCells] = useState<{
     before: number[];
     after: number[];
@@ -110,23 +104,6 @@ export const Calendar = () => {
 
   const handleClick = (value: Date) => () => setSelectedDate(value);
 
-  const incMonth = (isNext: boolean) => () => {
-    const nextSelected = isNext
-      ? addMonths(selectedDate, 1)
-      : subMonths(selectedDate, 1);
-    const month = nextSelected.getMonth();
-    const year = nextSelected.getFullYear();
-    setCalendar({ month, year });
-    setSelectedDate(nextSelected);
-  };
-
-  useEffect(() => {
-    const dt = new Date();
-    const month = dt.getMonth();
-    const year = dt.getFullYear();
-    setCalendar({ month, year });
-  }, []);
-
   useEffect(() => {
     const { month, year } = calendar;
     if (!isNaN(month) && !isNaN(year)) {
@@ -134,11 +111,6 @@ export const Calendar = () => {
       setCalDates(dates);
     }
   }, [calendar]);
-
-  useEffect(() => {
-    const days = getWeekDays(0);
-    setWeekDays(days);
-  }, []);
 
   useEffect(() => {
     if (calDates.length) {

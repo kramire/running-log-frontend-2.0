@@ -8,7 +8,7 @@ export const getMonthDates = (month: number, year: number) => {
   });
 };
 
-export const getWeekDays = (weekStart: number) => {
+export const getWeekDays = (weekStart: number): string[] => {
   const startIdx = weekStart > 6 || weekStart < 0 ? 0 : weekStart;
   const days = [
     "Sunday",

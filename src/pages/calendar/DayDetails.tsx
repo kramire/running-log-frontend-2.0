@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { TABLET } from "../../lib/constants";
 import { GridRow } from "../../components";
+import { DateContext } from "../../contexts";
 import { format } from "date-fns";
 import { Grid, Label } from "semantic-ui-react";
 import { useWindowSize } from "../../hooks";
@@ -28,8 +29,8 @@ const RunType = styled(Label)`
   }
 `;
 
-export const DayDetails = (props: { selectedDate: Date }) => {
-  const { selectedDate } = props;
+export const DayDetails = () => {
+  const { selectedDate } = useContext(DateContext);
   const [run, setRun] = useState<Run>();
 
   const { width } = useWindowSize();

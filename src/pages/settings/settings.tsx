@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import {
   Form,
   Input,
@@ -17,12 +17,12 @@ import {
   SmallButton,
   genButOpts,
 } from "../../components";
+import { UserContext } from "../../contexts";
 import { TABLET } from "../../lib/constants";
-import { mockUser } from "../../lib/mockData";
-import { User, Unit, weekStartDict, TrainingFor } from "../../lib/types";
+import { Unit, weekStartDict, TrainingFor } from "../../lib/types";
 
 export const Settings = () => {
-  const [user, setUser] = useState<User>(mockUser);
+  const { user, setUser } = useContext(UserContext);
 
   const { width } = useWindowSize();
   const colWidths = {
@@ -31,7 +31,7 @@ export const Settings = () => {
   };
 
   const changeUser = (label: string, value: any) =>
-    setUser({ ...user, [label]: value });
+    user && setUser({ ...user, [label]: value });
 
   const handleChange =
     (label: string) => (_: any, data: InputOnChangeData | CheckboxProps) =>
@@ -39,6 +39,7 @@ export const Settings = () => {
 
   const handleSubmit = () => console.log("to do");
 
+  if (!user) return null;
   return (
     <>
       <h1>Settings</h1>
